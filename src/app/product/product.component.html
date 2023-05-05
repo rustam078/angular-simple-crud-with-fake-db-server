@@ -1,0 +1,34 @@
+<h1>
+    Add Products 
+   </h1>
+   <form #productForm="ngForm">
+    <p>{{message}}</p>
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="prodObj.name"><br/>
+    <label>Description</label>
+    <input type="text" name="desc" [(ngModel)]="prodObj.desc"><br/>
+    <label>Price</label>
+    <input type="text" name="price" [(ngModel)]="prodObj.price"><br/>
+    <button type="submit" *ngIf="!isEdit" 
+   (click)="createProduct(productForm.value)">Submit</button>
+    <button type="submit" *ngIf="isEdit" (click)="updateProduct()" 
+   >Update</button>
+   </form>
+   <h1>List of Products</h1>
+   <table>
+    <tr>
+    <td>Id</td>
+    <td>ProductName</td>
+    <td>ProductDescription</td>
+    <td>ProductPrice</td>
+    </tr>
+    <tr *ngFor="let data of products">
+    <td>{{data.id}}</td>
+    <td>{{data.name}}</td>
+    <td>{{data.desc}}</td>
+    <td>{{data.price}}</td>
+    <td><button (click)="productedit(data)">Edit</button></td>
+    <td><button (click)="deleteProduct(data)">Delete</button></td>
+    
+    </tr>
+   </table>
